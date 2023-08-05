@@ -2,6 +2,7 @@ package br.com.hexagonal.investimento.adapters.outbound;
 
 import br.com.hexagonal.investimento.application.ports.InvestimentoOutbountPort;
 import br.com.hexagonal.investimento.domain.Investimento;
+import br.com.hexagonal.investimento.domain.InvestimentoComCep;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,12 @@ public class InvestimentoDatastore implements InvestimentoOutbountPort {
     @Override
     public InvestimentoEntity cadastraInvestimento(Investimento investimento) {
         InvestimentoEntity investimentoEntity = mapper.map(investimento, InvestimentoEntity.class);
+        return investimentoRepository.save(investimentoEntity);
+    }
+
+    @Override
+    public InvestimentoEntity cadastraInvestimentoComUf(InvestimentoComCep investimentoComCep) {
+        InvestimentoEntity investimentoEntity = mapper.map(investimentoComCep, InvestimentoEntity.class);
         return investimentoRepository.save(investimentoEntity);
     }
 }

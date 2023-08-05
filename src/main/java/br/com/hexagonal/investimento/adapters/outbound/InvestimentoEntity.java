@@ -18,4 +18,5 @@ public class InvestimentoEntity {
     private String ativo;
     private BigDecimal valor;
     private int quantidadeAcoes;
+    private String uf;
 }

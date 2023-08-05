@@ -24,4 +24,9 @@ public class InvestimentoController {
     public InvestimentoEntity realizaInvestimento(@RequestBody InvestimentoDto investimentoDto) throws Exception {
         return investimentoService.realizaInvestimento(investimentoDto);
     }
+
+    @PostMapping(value = "/cep")
+    public InvestimentoEntity realizaInvestimentoComCep(@RequestBody InvestimentoDto investimentoDto) throws Exception {
+        return investimentoService.realizaInvestimentoComCep(investimentoDto);
+    }
 }
