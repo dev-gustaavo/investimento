@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class InvestimentoDto {
-
     private String ativo;
     private BigDecimal valor;
     private int quantidadeAcoes;

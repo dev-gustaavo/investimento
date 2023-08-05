@@ -1,8 +1,8 @@
-package br.com.hexagonal.investimento.adapters;
+package br.com.hexagonal.investimento.adapters.inbound;
 
+import br.com.hexagonal.investimento.adapters.outbound.InvestimentoEntity;
 import br.com.hexagonal.investimento.application.dto.InvestimentoDto;
 import br.com.hexagonal.investimento.application.service.InvestimentoService;
-import br.com.hexagonal.investimento.domain.Investimento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +21,7 @@ public class InvestimentoController {
     }
 
     @PostMapping
-    public Investimento realizaInvestimento(@RequestBody InvestimentoDto investimentoDto) throws Exception {
+    public InvestimentoEntity realizaInvestimento(@RequestBody InvestimentoDto investimentoDto) throws Exception {
         return investimentoService.realizaInvestimento(investimentoDto);
     }
 }
