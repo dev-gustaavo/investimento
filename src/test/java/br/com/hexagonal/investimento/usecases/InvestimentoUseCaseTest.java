@@ -23,11 +23,11 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class InvestimentoUseCaseTest {
 
-    @Mock
-    InvestimentoDtoMock investimentoDtoMock;
+    @Autowired
+    private InvestimentoDtoMock investimentoDtoMock = new InvestimentoDtoMock();
 
-    @Mock
-    InvestimentoMock investimentoMock;
+    @Autowired
+    private InvestimentoMock investimentoMock = new InvestimentoMock();
 
     @Autowired
     private InvestimentoUseCase investimentoUseCase;
@@ -43,13 +43,11 @@ public class InvestimentoUseCaseTest {
 
     @Test
     public void deveRetornarExecaoQuandoValorDoInvestimentoForZerado() {
-        InvestimentoDto investimentoDto = investimentoDtoMock.getInvestimentoValorZero();
-        assertThrows(Exception.class, () -> investimentoUseCase.realizaInvestimento(investimentoDto));
+        assertThrows(Exception.class, () -> investimentoUseCase.realizaInvestimento(investimentoDtoMock.getInvestimentoValorZero()));
     }
 
     @Test
     public void deveRetornarFalseQuandoValorDoInvestimentoForZerado() {
-        Investimento investimento = investimentoMock.comValorZero();
         assertFalse(investimentoUseCase.validaValorDoInvestimento(investimentoMock.comValorZero().getValor()));
     }
 
